@@ -98,8 +98,10 @@ class IniFile:
         value_string = '1    0.0    ' + str(count) + '    u    1.0'
         self._config['Grid']['X1-grid'] = value_string
 
-    def set_time_mesh_count(self):
-        pass
+    def set_time_mesh_count(self, count):
+        tstop = float(self._config['Time']['tstop'])
+        tab = tstop/count
+        self._config['Static Grid Output']['tab'] = '  '.join([str(tab), '-1'])
 
     def set_output_dir(self, output_dir):
         self._config['Static Grid Output']['output_dir'] = output_dir
